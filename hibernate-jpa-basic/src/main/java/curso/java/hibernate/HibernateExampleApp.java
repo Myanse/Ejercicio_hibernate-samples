@@ -2,6 +2,7 @@ package curso.java.hibernate;
 
 import curso.java.hibernate.data.EmployeeRepository;
 import curso.java.hibernate.data.entity.Employee;
+import curso.java.hibernate.data.entity.Scope;
 import curso.java.hibernate.data.entity.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,17 +50,20 @@ public class HibernateExampleApp implements CommandLineRunner {
 
   private Set<Task> getTasks() {
 
+    Scope scope1 = new Scope("Reports", "Reports Generation");
     Set<Task> tasks = new HashSet<>();
     Task task1 = new Task();
     task1.setTaskName("report generation");
     task1.setTaskDescription("Daily report generation");
+    task1.setScope(scope1);
     tasks.add(task1);
+
+    Scope scope2 = new Scope("View Management", "Management of Views");
     Task task2 = new Task();
     task2.setTaskName("view generation");
     task2.setTaskDescription("Daily view generation");
+    task2.setScope(scope2);
     tasks.add(task2);
     return tasks;
   }
-
-
 }
